@@ -1,1 +1,1 @@
-web gunicorn index:app
+web: gunicorn _MyWeb.wsgi
