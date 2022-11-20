@@ -1,4 +1,4 @@
-django
+Flask
 gunicorn
 beautifulsoup4
 jieba
