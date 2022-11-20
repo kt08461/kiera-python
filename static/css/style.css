@@ -1,0 +1,49 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    border-top: 2px dashed #8e939e;
+}
+
+.sidenav {
+	height:100%;
+	width:180px;
+	position: fixed;
+	z-index:1;
+	top:0;
+	left:0;
+	background-color:#8fd0d4;
+	overflow-x: :hidden;
+	font-size: larger;
+}
+
+.sidenav .title {
+	padding-top:20px;
+	text-align: center;
+	font-weight:bold;
+}
+.sidenav a {
+	display:block;
+	padding: 10px;
+	margin: 10px;
+	background: #fff;
+	color: #666;
+	text-decoration: none;
+	text-align: center;
+}
+
+.sidenav a.selected{
+	background: #c00;
+	color: #fff;
+}
+
+.content{
+	margin-left:180px;
+	padding: 10px;
+	background: #ecfdff;
+}
