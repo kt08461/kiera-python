@@ -1,4 +1,5 @@
 Django
+django-heroku
 gunicorn
 beautifulsoup4
 jieba

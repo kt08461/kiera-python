@@ -8,7 +8,7 @@ var arrLink=[
 $(function () {
 	$(".sidenav>a").click(function (e) {
 		$(".sidenav>a.selected").removeClass();
-		$(".content").html("<img src='/static/images/loading.gif'>");
+		$(".content").html("<img src='/static/img/loading.gif'>");
 
 		arr=arrLink[ $(this).addClass("selected").attr("id") ]
 		if (arr[1] == "") {
