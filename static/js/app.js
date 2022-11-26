@@ -18,6 +18,11 @@ $(function () {
 			window.open(arr[0])
 		}
 	}).first().click();
-  });
-  
-  
+});
+
+var pageChange=function(){
+	var url = arrLink[0][0]+'/'+$('#page').val()+'/';
+
+	$(".content").html("<img src='/static/img/loading.gif'>");
+	$(".content").load(url);
+}

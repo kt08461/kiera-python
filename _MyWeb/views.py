@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
-def crawler(request):
+def crawler(request, page=10):
     from . import crawler
 
-    return crawler.crawlerMain(request)
+    return crawler.crawlerMain(request, page)
 
 def students(request):
     from . import students

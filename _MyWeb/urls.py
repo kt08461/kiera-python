@@ -20,5 +20,6 @@ from . import views
 urlpatterns = [
     re_path('^$', views.index),
     path('crawler/', views.crawler, name="crawler"),
-    path('students/', views.students, name="students"),
+    path('crawler/<int:page>/', views.crawler, name="crawler"),
+    path('students/', views.students),
 ]

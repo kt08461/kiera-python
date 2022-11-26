@@ -3,19 +3,19 @@ import urllib.request as req
 import re
 import bs4
 
-def crawlerMain(request):
+def crawlerMain(request, page=10):
     t_arr=[]
 
     # 抓取 PTT 八卦版的網頁原始碼 (HTML)
-    pages=10
     url="/bbs/Gossiping/index.html"
-    getTitles(pages, url, t_arr)
+    getTitles(page, url, t_arr)
 
     # 關鍵字詞分析
     tags=getKeyWords(t_arr)
 
     # 產生html Code
-    context = {'ptt_board_url':url, 'total_pages':pages, 'titles_count':len(t_arr), 'ten_KeyWords': "、".join(tags)}
+    context = {'ptt_board_url':url, 'total_page':page, 'titles_count':len(t_arr), 'ten_KeyWords': "、".join(tags)}
+    context['page_selbar'] = range(1, 20)
     return render(request, "crawler.html", context)
 
 # 關鍵字詞分析
@@ -28,8 +28,8 @@ def getKeyWords(t_arr):
     return tags
 
 # 抓取 PTT Stock版各網頁標題
-def getTitles(pages, url, t_arr):
-    if pages<=0:
+def getTitles(page, url, t_arr):
+    if page<=0:
         return
 
     pttURL="https://www.ptt.cc"
@@ -56,6 +56,6 @@ def getTitles(pages, url, t_arr):
             t_arr.append(t)
 
     # 抓取上一頁的連結
-    pages-=1
+    page-=1
     url=html_text.find("a", string="‹ 上頁")["href"] # 找到內文是 < 上頁 的 a 標籤
-    getTitles(pages, url, t_arr)
+    getTitles(page, url, t_arr)
