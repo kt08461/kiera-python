@@ -7,9 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import base64
 from django.shortcuts import render
-from io import BytesIO
 
 TitleFont = {'fontsize':16, 'fontweight':'bold'}
 
@@ -35,7 +33,8 @@ def init_data():
         plt.rcParams['axes.unicode_minus'] = False
     setImgFont()
 
-    file_path="static/data/110_student.csv"
+    from django.conf import settings
+    file_path = settings.STATIC_ROOT + "/110_student.csv"
     df = pd.read_csv(file_path, header=0,dtype={'學校代碼':str})
     df = df.applymap(lambda x: x.replace(',',''))
     df = df.applymap(lambda x: x.replace('-','0'))
@@ -166,6 +165,9 @@ def imgGenderByCity(df):
 
 # 圖檔轉Base64
 def imgBase64(fig):
+    import base64
+    from io import BytesIO
+
     img_fp = BytesIO()
     fig.savefig(img_fp, format='png', bbox_inches='tight')
     img_b64 = base64.encodebytes(img_fp.getvalue()).decode()

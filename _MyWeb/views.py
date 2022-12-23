@@ -10,6 +10,11 @@ def students(request):
 
     return students.studentsMain(request)
 
+def cifar10(request):
+    from . import cifar10
+
+    return cifar10.cifar10Main(request)
+
 def index(request):
     context = {}
 

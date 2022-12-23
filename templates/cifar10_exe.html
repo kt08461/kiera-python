@@ -1,0 +1,55 @@
+<table border="0">
+  <tbody>
+    <tr>
+      <td><h3>預測結果</h3></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <table border="1">
+          <tbody>
+            <tr>
+              <td></td>
+              {% for key, value in label_dict %}
+                {% if key == pred_id %}
+                  <td class="predict">{{ value }}</td>
+                {% else %}
+                  <td class="non_predict">{{ value }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+            <tr>
+              <td></td>
+              {% for key, value in label_dict %}
+                {% if key == pred_id %}
+                  <td class="predict"><img src='/static/img/cifar10/{{ key }}.jpg'></td>
+                {% else %}
+                  <td class="non_predict"><img src='/static/img/cifar10/{{ key }}.jpg'></td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+            <tr>
+              <td>預測機率</td>
+              {% for key, value in pred_dict %}
+                {% if key == pred_id %}
+                  <td class="predict">{{ value }} %</td>
+                {% else %}
+                  <td class="non_predict">{{ value }} %</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+     </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <table border="0">
+          <tr>
+            <td align="right"><h3>比對圖檔：</h3></td>
+            <td align="left"><img src="{{ upload_image }}"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

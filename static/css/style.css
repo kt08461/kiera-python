@@ -12,7 +12,7 @@ hr {
 
 .sidenav {
 	height:100%;
-	width:180px;
+	width:230px;
 	position: fixed;
 	z-index:1;
 	top:0;
@@ -43,7 +43,7 @@ hr {
 }
 
 .content{
-	margin-left:180px;
+	margin-left:230px;
 	padding: 10px;
 	background: #ecfdff;
 }

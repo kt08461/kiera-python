@@ -50,6 +50,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+    # 把這個 middleware 加到第一個
+    MIDDLEWARE.insert(0,  'debug_toolbar.middleware.DebugToolbarMiddleware')
+
 ROOT_URLCONF = '_MyWeb.urls'
 
 TEMPLATES = [
@@ -116,11 +121,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_DIRS=[ BASE_DIR / "static", ]
+STATICFILES_DIRS = [ BASE_DIR / "static", ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+APPEND_SLASH = False
+
+# django-debug-toolbar
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.history.HistoryPanel',
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+DEBUG_TOOLBAR_CONFIG = {
+    # "JQUERY_URL": '//cdn.bootcss.com/jquery/2.2.4/jquery.min.js', # 使用國內的 JQUERY_URL
+    'RESULTS_STORE_SIZE': 100,  # 已儲存請求的數量
+}
+
+INTERNAL_IPS = ['127.0.0.1',]

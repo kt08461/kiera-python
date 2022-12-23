@@ -1,0 +1,20 @@
+.non_predict {
+	text-align: center;
+	font-size:medium;
+	padding: 2px;
+}
+
+.predict{
+	text-align: center;
+	font-size:x-large;
+	padding: 10px;
+	background: #c00;
+	color: #fff;
+}
+
+#loading_time {
+    font-size: 50px;
+    color: blue;
+    display: block;
+    margin: 50px;
+}

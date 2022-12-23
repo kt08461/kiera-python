@@ -13,8 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, re_path
+from django.conf import settings
+from django.urls import path, re_path, include
 from . import views
 
 urlpatterns = [
@@ -22,4 +22,9 @@ urlpatterns = [
     path('crawler/', views.crawler, name="crawler"),
     path('crawler/<int:page>/', views.crawler, name="crawler"),
     path('students/', views.students),
+    path('cifar10/', views.cifar10),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(path('__debug__', include(debug_toolbar.urls)))
