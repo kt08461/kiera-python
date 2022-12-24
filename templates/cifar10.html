@@ -31,7 +31,7 @@
           <form action="" method="post" id="uform" enctype="multipart/form-data">
             {% csrf_token %}
             請選擇 png、jpg、jpeg 圖檔
-            (請勿超過 512KB)<p>
+            <font color="#FF0000">( 請勿超過 512KB )</font><p>
             <input
               type="file"
               id="upload_img" name="upload_img"

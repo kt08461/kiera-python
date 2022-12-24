@@ -9,7 +9,7 @@ function stopwatch() {
     
     this.span_text = function() {
         text = '<h3>圖片分析中...</h3>'
-        text += '<span id="loading_time"></span>'
+        text += '<div id="loading_time"></div>'
         return text
     };
 
@@ -53,7 +53,7 @@ function formatTime(time) {
     s = Math.floor(time / 1000);
     
     // 顯示時間計算結果，套用到幾位數格式上
-    newTime = pad(h, 2) + ":" + pad(m, 2) + ":" + pad(s, 2);
+    newTime = pad(m, 2) + ":" + pad(s, 2) + ' (分:秒)';
     return newTime;
 }
 
@@ -91,7 +91,7 @@ $("#btnSubmit").click(function () {
         $(".cifar10_content").html( t.span_text() );
         load_time = document.getElementById("loading_time");
         loading_time();
-        
+
         var formData = new FormData();           
         formData.append("upload_img", img);
         formData.append("csrfmiddlewaretoken", $("input[name=csrfmiddlewaretoken]").val());
