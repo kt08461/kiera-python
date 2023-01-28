@@ -15,6 +15,11 @@ def cifar10(request):
 
     return cifar10.cifar10Main(request)
 
+def cifar10_heroku(request):
+    from . import cifar10_heroku
+
+    return cifar10_heroku.cifar10Main(request)
+
 def index(request):
     context = {}
 

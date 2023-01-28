@@ -27,19 +27,18 @@ def cifar10Main(request):
         # 預測上傳圖片
         import time
         from PIL import Image
-        from django.core.files.storage import FileSystemStorage
         
-        upload_file = request.FILES['upload_img'] if 'upload_img' in request.FILES else None
-        fs = FileSystemStorage()
-        nowTime = int(time.time())
-        img_ext = upload_file.name.split('.')[-1]
-        imgname = f"{nowTime}.{img_ext}"
-        imgname = fs.save(imgname, upload_file)
+        time.sleep(3)
+        imgname = 'cifar10_upload_sample.jpg'
         imgpath = str(settings.MEDIA_ROOT / imgname)
         img = Image.open(imgpath) # 開啟圖片
 
         # 預測圖檔
-        pred_id, pred_np = cifar10_predict(img, imgpath)
+        pred_id = 5
+        pred_np = np.array([1.4755024e-04,9.2989521e-06,1.1061183e-02,8.5027754e-02,1.9214673e-04,8.9887047e-01,1.3839315e-03,3.2831123e-03,1.4571605e-05,9.9769004e-06], dtype = float)
+        logger.debug(f"pred_id : {pred_id}")
+        logger.debug(f"pred_np : {pred_np}")
+        logger.debug(f"type pred_np : {type(pred_np)}")
         label_dict = get_labels_dict()
 
         # 各類預測機率
@@ -55,18 +54,12 @@ def cifar10Main(request):
             'upload_image' : imgBase64(img), # 原圖轉 Base64
         }
 
-        # 刪除png圖檔
-        try:
-            os.remove(imgpath)
-        except OSError as e:
-            logger.debug("Error: %s : %s" % (imgpath, e.strerror))
-
         return render(request, "cifar10_exe.html", context)
     else:
         # ======================================
         # cifar10 主頁顯示
         # ======================================
-        return render(request, "cifar10.html")
+        return render(request, "cifar10_heroku.html")
 
 def cifar10_predict(img, imgpath):
     import cv2

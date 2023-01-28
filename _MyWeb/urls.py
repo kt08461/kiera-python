@@ -23,6 +23,7 @@ urlpatterns = [
     path('crawler/<int:page>/', views.crawler, name="crawler"),
     path('students/', views.students),
     path('cifar10/', views.cifar10),
+    path('cifar10_heroku/', views.cifar10_heroku),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/static/css/cifar10.css">
+<table border="0">
+  <tbody>
+    <tr>
+      <th background="static/img/cifar10_title_bg.png" colspan="2">
+        <a href="https://www.kaggle.com/competitions/cifar-10" target="_blank"><img src="static/img/cifar10_title.png"></a>
+      </th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <h3>
+        CIFAR-10數據集包含10種不同類別的彩色圖像，
+        分別代表	「飛機、汽車、鳥、貓、鹿、狗、青蛙、馬、船和卡車」。
+        </h3>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="right" bgcolor="#EBD6D6">
+        My Score：
+     </td>
+      <td>
+        <img src="static/img/cifar10_myscore.png">
+     </td>
+    </tr>
+    <tr>
+      <td valign="top" align="right" bgcolor="#EBD6D6">
+        線上圖像預測：
+     </td>
+      <td valign="top">
+        <div class="cifar10_input">
+          <form action="" method="post" id="uform" enctype="multipart/form-data">
+            {% csrf_token %}
+            請選擇 png、jpg、jpeg 圖檔
+            <font color="#FF0000">( 請勿超過 512KB )</font><p>
+            <input
+              type="file"
+              id="upload_img" name="upload_img"
+              accept="image/png, image/jpg, image/jpeg"
+            />
+            <input type='button' id='btnSubmit' value='送出'>
+            <input type='button' id='btnReset' value='清除'>
+          </form>
+          <font color="#0000FF">※ 因安裝 TensorFlow 會超過 Heroku 容量上限(512MB)，故以模擬方式示意。</font>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="cifar10_content"><img src="/static/img/cifar10_upload_sample.jpg"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script src="/static/js/cifar10_heroku.js"></script>
