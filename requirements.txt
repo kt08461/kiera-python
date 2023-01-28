@@ -7,5 +7,5 @@ numpy
 matplotlib
 pandas
 django_debug_toolbar
-opencv-python
+opencv-python-headless
 keras
