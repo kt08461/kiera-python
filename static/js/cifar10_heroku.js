@@ -79,9 +79,22 @@ function imgCheck(img) {
     }
 }
 
+function previewImg(input) {
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        $(".cifar10_content").html('<img id="preview_image" src="#">');
+        
+        reader.onload = function (e) {
+            $("#preview_image").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 $("#upload_img").change(function (e) {
     img = e.target.files[0];
-    imgCheck(img)
+    if (imgCheck(img))
+        previewImg(this);
 });
 
 $("#btnSubmit").click(function () {
