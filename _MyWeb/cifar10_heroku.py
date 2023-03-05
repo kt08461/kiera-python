@@ -28,7 +28,7 @@ def cifar10Main(request):
         import time
         from PIL import Image
         
-        time.sleep(3)
+        time.sleep(1)
         imgname = 'cifar10_upload_sample.jpg'
         imgpath = str(settings.MEDIA_ROOT / imgname)
         img = Image.open(imgpath) # 開啟圖片

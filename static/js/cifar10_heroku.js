@@ -100,7 +100,7 @@ $("#upload_img").change(function (e) {
 $("#btnSubmit").click(function () {
     fileinput = $("#upload_img")[0];
     img = fileinput.files[0];
-    if (imgCheck(img)) {
+    //if (imgCheck(img)) {
         $(".cifar10_content").html( t.span_text() );
         load_time = document.getElementById("loading_time");
         loading_time();
@@ -120,7 +120,7 @@ $("#btnSubmit").click(function () {
                 $(".cifar10_content").html(response);
             }
         });
-    }
+    //}
 })
 
 $("#btnReset").click(function (e) {
