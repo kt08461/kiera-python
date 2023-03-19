@@ -20,6 +20,10 @@ def cifar10_heroku(request):
 
     return cifar10_heroku.cifar10Main(request)
 
+def git(request):
+
+    return render(request, "git.html")
+
 def index(request):
     context = {}
 

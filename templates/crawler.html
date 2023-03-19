@@ -1,6 +1,6 @@
 <h2>=== 抓取 <a href="https://www.ptt.cc{{ ptt_board_url }}" target="_blank">PTT 八卦版</a> 最新關鍵分詞 ===</h2>
     選取頁數：
-    <select name="page" id="page" onChange="pageChange()">
+    <select name="page" id="page" onChange="crawler_pageChange()">
     {% for i in page_selbar %}
         {% if total_page == i %}
             <option value="{{ i }}" selected>{{ i }}</option>

@@ -24,6 +24,7 @@ urlpatterns = [
     path('students/', views.students),
     path('cifar10/', views.cifar10),
     path('cifar10_heroku/', views.cifar10_heroku),
+    path('git/', views.git),
 ]
 
 if settings.DEBUG:

@@ -1,10 +1,11 @@
 var arrLink=[
+	["/cifar10_heroku/",''],
 	["/crawler/",''],
 	["/students/",''],
-	["/cifar10/",''],
+	["/git/",''],
 	["https://app.powerbi.com/view?r=eyJrIjoiYjUyODhmN2YtZjA5NC00NmQzLWJiMjgtYzJhZTlhYzE2NzgzIiwidCI6IjllYTVjOTJkLTNiMDUtNGFkMy1iNjNiLTgzYjg2YjdmMzUyOSIsImMiOjEwfQ%3D%3D","_blank"],
 	["https://app.powerbi.com/view?r=eyJrIjoiZmU4OTkxOWEtNjg0MS00ZGEwLThjZmEtZGM3NTZlZGIxYjdkIiwidCI6IjY4NThiMWYyLWI5YjQtNDk0Zi1iZWIxLTJmMjdlZDBkNDk1ZiIsImMiOjEwfQ%3D%3D","_blank"],
-	["/cifar10_heroku/",'']
+	["/cifar10/",'']
 ];
 
 $(function () {
@@ -23,8 +24,8 @@ $(function () {
 	}).first().click();
 });
 
-var pageChange=function(){
-	var url = arrLink[0][0]+$('#page').val()+'/';
+var crawler_pageChange=function(){
+	var url = arrLink[1][0]+$('#page').val()+'/';
 
 	$(".content").html("<img src='/static/img/loading.gif'>");
 	$(".content").load(url);
